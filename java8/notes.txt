@@ -1,0 +1,56 @@
+Build process of .java file:
+.java -compiler-> .class -interpreter-> .exe
+
+what is the difference between JDK, JRE?
+JDK is the overall or the whole develepment kit, JRE is a part of the JDK.
+JDK : JRE + other develepment tools like javac(compiler), debugger and other things
+JRE : JVM + core libraries and and other components used to run the software 
+
+What does the JVM include?
+interpreter  : interpret the .class file to native code of the hosting machine
+class loader : loads the .class file into memory 
+JIT compiler : helps in the interpreter in its job by compiling the bytecode (.class) into native code to deliver it to the interpreter
+
+
+what is the difference between compareTo(), equals() and == ?
+1. compareTo() : used to sort objects in collections, exists in Comparable interface and return interface  ==> int compareTo(T o)
+2. equals()    : used to check the logical equality of the objects, the objects contains the same data, exists in 'Object' super class 
+3. ==          : used to check if the ref variables of two objects are the same or not (existed in the same place in memory)
+
+Key Differences:
+compareTo(): Compares order.
+equals(): Compares content or logical equality.
+==: Compares reference identity (whether two references point to the same object in memory).
+
+what are primitive data types in java?
+1.  byte (1 byte): default ==> 0
+2.  char (2 byte): default ==> '\0'
+3.  short (2 byte): default ==> 0
+4.  int (4 byte): default ==> 0
+5.  long (8 byte):default ==> 0
+7.  float (4 byte): default ==> 0.0
+8.  double (8 byte):default ==> 0.0
+9.  boolean ( unkown):default ==> false
+10. String : null ==> special literal that is assigned to any ref variables
+
+(switch Case)
+Notes on the case clause:
+Each case must contain a constant expression (like a literal or an enum value).
+The values provided in each case must be unique within that switch statement.
+The break statement is optional, but without it, execution continues into the next case, which is called fall-through behavior. This can sometimes be useful but often leads to bugs if not intended.
+
+important note: static initializer is loaded into memory by the JVM before calling the main method
+
+what is Functional interface?
+it is an interface that contains only one abstract method, and it defines the target types
+of the lamda expression and method reference.
+
+What is the direction of widening?
+char --> short--> int --> long--> float --> double
+
+can we use a normal local variable (not final) without initializaion?
+no, the local variable must be initialized before using it in order not to give a compilation error.
+
+
+can i use 'var' keyword with class members fields?
+no, it is used only with local variables inside the method.
