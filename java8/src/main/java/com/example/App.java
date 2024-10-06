@@ -53,17 +53,56 @@ class OuterClass{
 }
 
 
+class Example {
+
+    // Fields : static fields & instance fields
+    private static int staticField = initializeStaticField();
+    private int instanceField      = initializeInstanceField();
+
+    // Initializer Blocks : static & instance
+    static {
+        System.out.println(staticField); // 1
+        System.out.println("Static initializer block");
+    }
+
+    {
+        System.out.println(this.instanceField);
+        System.out.println("Instance initializer block");
+    }
+
+    // constructor 
+    public Example() {
+        System.out.println("Constructor");
+    }
+
+
+    private static int initializeStaticField() {
+        System.out.println("Static field initialized");
+        return 1;
+    }
+
+    private int initializeInstanceField() {
+        System.out.println("Instance field initialized");
+        return 2;
+    }
+}
+
+
+
 
 
 public class App {
+
 
     static {
         System.out.println("Inside The 1st Block");
     }
 
-    static {
+    static{
         System.out.println("Inside The 2nd Block");
     }
+
+    
 
     public static void main(String[] args) {
 
@@ -156,6 +195,28 @@ public class App {
                 }
         }
 
+
+        // order of execution of the class members 
+        System.err.println("---------------------------------");
+        System.out.println("Main method started");
+        Example example = new Example();
+        Example example2 = new Example(); // static initializer block will be exe-cuted only one time before calling the main
+
+
+        System.out.println("=========================  Collections ============================");
+        /* Generic array that fixes the problem of that the array must contain homogenous data  */
+        Object arr[] = new Object[3];
+        arr[0] = "name : ahmad"; // string
+        arr[1] = 29; // integer
+        arr[2] = true; // boolean 
+
+        /* in the same array  */
+        System.out.println(arr[0]);
+        System.out.println("age : " + arr[1]);
+        System.out.println("single?:  " + arr[2]);
+        
+
+        
 
         System.out.println("=========================================================");
         System.out.println("=========================================================");

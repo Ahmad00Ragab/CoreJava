@@ -55,3 +55,26 @@ no, the local variable must be initialized before using it in order not to give 
 can i use 'var' keyword with class members fields?
 no, it is used only with local variables inside the method.
 
+
+what is the sequence of executing the class members?
+1. static initializers & static fields (Whatever comes first)
+2. calling the main method
+3. non-static initializers & instance fields (Whatever comes first)
+4. constructor
+
+/* =============== Collections ============== */
+what is a collection?
+it is a single entity that repersents a group of objects 
+
+what are the problems that we faced in arrays that motivated us to use collections?
+1. fixed size (not growable in runtime)
+2. doesn't use underlying data structure so, no ready-made methods to work on it 
+3. contains homogenous data 
+
+
+
+
+Refs Links :
+
+Collections Course
+1. https://www.youtube.com/watch?v=hKhlkx_6HeI&list=PLUDwpEzHYYLu9-xrx5ykNH8wmN1C1qClk&ab_channel=SDET-QA
