@@ -3,7 +3,10 @@ package com.example;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+
+import jakarta.faces.event.SystemEvent;
 
 interface Greeting {
 
@@ -214,7 +217,73 @@ public class App {
         System.out.println(arr[0]);
         System.out.println("age : " + arr[1]);
         System.out.println("single?:  " + arr[2]);
+
+        // print them as list 
+        System.out.println(Arrays.asList(arr));
         
+
+        System.out.println("---------------------");
+
+        ArrayList al = new ArrayList<>();
+        // ArrayList<String> al = new ArrayList<>(); // for this the add(Integer) and add(Double) gives " Error "
+        
+        al.add("welcome");
+        al.add(15);
+        al.add(true);
+        al.add(15.6);
+        al.add('a');
+        
+        System.out.println(al); // print the list [welcome, 15, true, 15.6, a]
+        System.out.println(al.size()); 
+        
+        /* Looping over a collection  */
+        
+        /* normal for loop */
+        for(int i = 0; i < al.size(); i++){
+            System.out.println(al.get(i));
+        }
+        /* enhanced for loop */
+        for(var v : al)
+            System.out.println(v);
+        /*  iterator */
+        Iterator it = al.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+        
+        System.out.println("------------------");
+        ArrayList<String> al2 = new ArrayList<>();
+        al2.add("O");
+        al2.add("F");
+        al2.add("P");
+        al2.add("C");
+        al2.add("W");
+        al2.add("X");
+        al2.addFirst("ahmad");
+        al2.addLast("Haroun");
+        al2.getFirst();
+
+
+
+        System.out.println("Before sorting : ");
+        System.out.println(al2);
+
+        Collections.sort(al2);
+
+        System.out.println("After sorting : ");
+        System.out.println(al2);
+
+        Collections.reverse(al2);
+
+        System.out.println("After reversing : ");
+        System.out.println(al2);
+
+        Collections.shuffle(al2);
+
+        System.out.println("After Shuffle : ");
+        System.out.println(al2);        
+        
+        System.out.println("------------------");
 
         
 

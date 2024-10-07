@@ -71,14 +71,14 @@ what are the problems that we faced in arrays that motivated us to use collectio
 2. doesn't use underlying data structure so, no ready-made methods to work on it 
 3. contains homogenous data 
 
-what are the main interfaces that we have in the collection Java Collection Framework(JCF)?
-1. Collection (root interface for all collections interfaces)
+what are the main interfaces that we have in the  Java Collection Framework(JCF)?
+1. Collection (root interface for all collections interfaces except Map interface)
 2. List
 3. Set 
 4. Queue
+5. Map
 
 what is the characterstics of List?
-
 - List extends the Collection interface
 - insertion order is preserved
 - duplicates allowed 
@@ -90,7 +90,6 @@ what are the classes that implemented the 'List' interface?
 
 
 what is the characterstics of Set?
-
 - Set extends the Collection interface
 - insertion order is not preserved
 - duplicates not allowed 
@@ -101,22 +100,77 @@ what are the classes that implemented the 'Set' interface?
 
 
 what is the characterstics of Queue?
-
-- List extends the Collection interface
+- Queue extends the Collection interface
 - insertion order is preserved in some implementations like (LinkedList,ArrayDeque,ConcurrentLinkedQueue) and not allow in other implementations like (PriorityQueue) 
 - duplicates allowed 
 
-what are the classes that implemented the 'List' interface?
+what are the classes that implemented the 'Queue' interface?
 1. PriorityQueue   
 2. LinkedList
 
 
+what are the characterstics of 'Map' interface?
+ - saves the data in the form of {key : value} 
+ - each key is an object and each value is an object 
+ - key is not allowed to be duplicated 
+ - value is allowed to be duplicated
+
+
+what are the implementations of the 'Map' interface?
+1. HashMap
+2. HashTable
+3. LinkedHashMap
+ 
 
 
 
+what are the methods that exists in Collection interface that is inherited to the childs?
+Collection col; // this is not permitted but for example:
+1. col.add(Object o)
+2. col.addAll(Collection c)
+3. col.remove(Object)
+4. col.removeAll(Collection)
+5. col.retainAll(Collection) ==> remove all the objects inside the Collection except the incoming 
+6. col.clear()
+7. col.isEmpty()
+8. col.size()
+9. col.contains()
+10. col.containsAll()
+11. col.toArray() ==> returns Group of objects
 
 
+can a class extend interface?
+no, class implement the interface only, but an interface can extend an interface.
 
+what are the methods that are in the lise interface other than those inherited from the Collection interface?
+List list;
+1. list.get(index)
+2. list.set(index, newObject) ==> replace the object at index with the newObject
+
+
+what are the methods that the ArrayList class added?
+1. addFirst(Object)
+2. addLast(Object) 
+3. removeFirst()
+4. removeLast()
+5. getFirst()
+6. getLast()
+
+what is the difference between the following declaraionts:
+1. ArrayList al = new ArrayList(); ==> stores any kind of objects (hetergenous Data) 
+2. ArrayList<String> al = new ArrayList<>(); ==> stores only Strings ==> (homogenous Data)
+
+
+which is better in performance ArrayList or LinkedList?
+- ArrayList is better when there is a lot of retreival  (al.get()) 
+- LinkedList is better when there is a logt of insertion (ls.set())
+
+For the implementations of the 'Set' interface : HashSet and LinkedHashSet ==> inertion order is not preserved
+so what is the mechanism that it uses in insertion?
+- it uses the mechanism of HashCode 
+
+what is the advantage of HashSet?
+Search operations in it is Fast because of using the concept of HashCode.
 
 
 
