@@ -71,6 +71,58 @@ what are the problems that we faced in arrays that motivated us to use collectio
 2. doesn't use underlying data structure so, no ready-made methods to work on it 
 3. contains homogenous data 
 
+what are the main interfaces that we have in the collection Java Collection Framework(JCF)?
+1. Collection (root interface for all collections interfaces)
+2. List
+3. Set 
+4. Queue
+
+what is the characterstics of List?
+
+- List extends the Collection interface
+- insertion order is preserved
+- duplicates allowed 
+
+what are the classes that implemented the 'List' interface?
+1. ArrayList
+2. Vector --> Stack
+3. LinkedList
+
+
+what is the characterstics of Set?
+
+- Set extends the Collection interface
+- insertion order is not preserved
+- duplicates not allowed 
+
+what are the classes that implemented the 'Set' interface?
+1. HashSet
+2. LinkedHashSet
+
+
+what is the characterstics of Queue?
+
+- List extends the Collection interface
+- insertion order is preserved in some implementations like (LinkedList,ArrayDeque,ConcurrentLinkedQueue) and not allow in other implementations like (PriorityQueue) 
+- duplicates allowed 
+
+what are the classes that implemented the 'List' interface?
+1. PriorityQueue   
+2. LinkedList
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
