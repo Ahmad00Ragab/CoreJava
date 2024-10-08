@@ -3,10 +3,14 @@ package com.example;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
-import jakarta.faces.event.SystemEvent;
+
 
 interface Greeting {
 
@@ -232,6 +236,8 @@ public class App {
         al.add(true);
         al.add(15.6);
         al.add('a');
+
+        
         
         System.out.println(al); // print the list [welcome, 15, true, 15.6, a]
         System.out.println(al.size()); 
@@ -261,7 +267,10 @@ public class App {
         al2.add("X");
         al2.addFirst("ahmad");
         al2.addLast("Haroun");
-        al2.getFirst();
+
+      
+        
+        
 
 
 
@@ -283,9 +292,67 @@ public class App {
         System.out.println("After Shuffle : ");
         System.out.println(al2);        
         
-        System.out.println("------------------");
 
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("ahmad");
+        linkedList.add("ragab");
+        linkedList.add("mohamed");
+        linkedList.add("haroun");
+
+        System.out.println(linkedList);
+
+        System.out.println("------------------");
+        HashSet<String> hash = new HashSet<String>(); //
         
+        hash.add("O");
+        hash.add("F");
+        hash.add("P");
+        hash.add("C");
+        hash.add("W");
+        hash.add("X");
+           
+
+        System.out.println(hash.contains("P"));
+        System.out.println(hash); //         [P, C, F, W, X, O]
+
+
+        // if you want to sort the hastset ==> convet it to list and sort 
+        List list = new ArrayList<>(hash);
+        System.out.println(list); // [P, C, F, W, X, O]
+        Collections.sort(list);
+        System.out.println(list); // [C, F, O, P, W, X]
+
+
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
+        
+        linkedHashSet.add("mourad");
+        linkedHashSet.add("Raafat");
+        linkedHashSet.add("mohamed");
+        linkedHashSet.add("ali");
+
+        System.out.println(linkedHashSet);
+        System.out.println(linkedHashSet.getFirst());
+        System.out.println(linkedHashSet.getLast());
+
+        PriorityQueue priorityQueue = new PriorityQueue<>();
+        
+        priorityQueue.offer("ahmad");
+        priorityQueue.offer("mohamed");
+        priorityQueue.add("ali");
+        
+        // priorityQueue.add(500); // Error [because PriorityQueue contains Homogenous Data only]
+
+        System.out.println(priorityQueue);
+        LinkedList linkeddList = new LinkedList<>();
+        linkeddList.offer("ahmad");
+        linkeddList.offer("mohamed");
+        linkeddList.add("ali");
+        linkeddList.add(500); // Acceptable [because LinkedList accepts Heterogenous Data]
+        
+        System.out.println(linkeddList);
+        
+
+
 
         System.out.println("=========================================================");
         System.out.println("=========================================================");

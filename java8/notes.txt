@@ -163,14 +163,55 @@ what is the difference between the following declaraionts:
 
 which is better in performance ArrayList or LinkedList?
 - ArrayList is better when there is a lot of retreival  (al.get()) 
-- LinkedList is better when there is a logt of insertion (ls.set())
+- LinkedList is better when there is a lot of insertion (ls.set())
 
-For the implementations of the 'Set' interface : HashSet and LinkedHashSet ==> inertion order is not preserved
+For the implementations of the 'Set' interface : HashSet inertion order is not preserved
 so what is the mechanism that it uses in insertion?
 - it uses the mechanism of HashCode 
 
 what is the advantage of HashSet?
 Search operations in it is Fast because of using the concept of HashCode.
+
+what is the difference between LinkedHashSet and HashSet?
+- both doesn't allow the duplication 
+- insertion order is preserved in LinkedHashSet but not preserved in HashSet 
+
+note : although the linkedHashSet insertion order is preserved , we can't add by index or get by index, just addFirst & addLast or getFirst&getLast 
+
+what is the difference between PriorityQueue and LinkedList?
+- both allow duplication
+- insertion order is preserved in both
+- PriorityQueue contains only homogenous Data but LinkedList allows hetergenous Data
+
+what are the added methods of the Queue interface other than the coming from the Collection interface?
+1. add() 
+2. offer()
+both to add an element at the Tail of the Queue (when 'add()' fails to add the element ==> throws Exception but offer() returns null )
+3. element()
+4. peek()
+both to get an element at the Head of the Queue (when 'element()' fails to get the element (empty queue)==> throws Exception but peek() returns null )
+5. remove()
+6. poll()
+both to get an element at the Head of the Queue and remove it after getting it (when 'remove()' fails to get the element (empty queue)==> throws Exception but poll() returns null )
+
+what are the methods that inside the 'Map' interface and its implementations HashMap & HashTable?
+HashMap map = new HashMap();
+1. map.put(key,value)
+2. map.putAll(Map m)
+3. map.remove(key)
+4. map.get(key) ==> returns an entry
+5. map.containsKey(key)
+6. map.containsValue(value)
+7. map.size()
+8. map.clear()
+9. map.isEmpty()
+10. map.keySet() ==> returns a Set of Keys Objects 
+11. map.Values() ==> returns all the Values as a Collection
+12. map.entrySet() ==> returns a Set of Entries 
+13. map.get(key).getKey() ==> returns the key of this entry 
+14. map.get(key).getValue() ==> returns the value of this entry
+
+
 
 
 
@@ -181,6 +222,5 @@ Search operations in it is Fast because of using the concept of HashCode.
 
 
 Refs Links :
-
 Collections Course
 1. https://www.youtube.com/watch?v=hKhlkx_6HeI&list=PLUDwpEzHYYLu9-xrx5ykNH8wmN1C1qClk&ab_channel=SDET-QA
