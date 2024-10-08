@@ -350,9 +350,6 @@ public class App {
         linkeddList.add(500); // Acceptable [because LinkedList accepts Heterogenous Data]
         
         System.out.println(linkeddList);
-        
-
-
 
         System.out.println("=========================================================");
         System.out.println("=========================================================");
