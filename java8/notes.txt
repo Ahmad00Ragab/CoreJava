@@ -45,8 +45,8 @@ what is Functional interface?
 it is an interface that contains only one abstract method, and it defines the target types
 of the lamda expression and method reference.
 
-What is the direction of widening?
-char --> short--> int --> long--> float --> double
+What is the direction of widening? (widening is the opposite of Casting)
+byte --> char --> short--> int --> long--> float --> double
 
 can we use a normal local variable (not final) without initializaion?
 no, the local variable must be initialized before using it in order not to give a compilation error.
@@ -142,7 +142,7 @@ Collection col; // this is not permitted but for example:
 can a class extend interface?
 no, class implement the interface only, but an interface can extend an interface.
 
-what are the methods that are in the lise interface other than those inherited from the Collection interface?
+what are the methods that are in the List interface other than those inherited from the Collection interface?
 List list;
 1. list.get(index)
 2. list.set(index, newObject) ==> replace the object at index with the newObject
@@ -180,7 +180,7 @@ note : although the linkedHashSet insertion order is preserved , we can't add by
 
 what is the difference between PriorityQueue and LinkedList?
 - both allow duplication
-- insertion order is preserved in both
+- insertion order is preserved in LinkedList but not preserved in PriorityQueue
 - PriorityQueue contains only homogenous Data but LinkedList allows hetergenous Data
 
 what are the added methods of the Queue interface other than the coming from the Collection interface?
@@ -220,7 +220,7 @@ What is the difference between HashMap and HashTable?
 
 
 What is the meaning of HashTable is Sysnchronized and thread-safe?
-it means that ==> the HashTable has methods inside it not allowed for two threads to access the same method at the same time.
+it means that ==> the HashTable has methods inside,  it not allowed for two threads to access the same method at the same time.
 
 
 
