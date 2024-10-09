@@ -199,7 +199,7 @@ HashMap map = new HashMap();
 1. map.put(key,value)
 2. map.putAll(Map m)
 3. map.remove(key)
-4. map.get(key) ==> returns an entry
+4. map.get(key) ==> returns an value
 5. map.containsKey(key)
 6. map.containsValue(value)
 7. map.size()
@@ -207,9 +207,20 @@ HashMap map = new HashMap();
 9. map.isEmpty()
 10. map.keySet() ==> returns a Set of Keys Objects 
 11. map.Values() ==> returns all the Values as a Collection
-12. map.entrySet() ==> returns a Set of Entries 
-13. map.get(key).getKey() ==> returns the key of this entry 
-14. map.get(key).getValue() ==> returns the value of this entry
+12. map.entrySet() ==> returns a Set of Entries
+13. getKey() ==> returns the key of this entry 
+14. getValue() ==> returns the value of this entry
+
+
+What is the difference between HashMap and HashTable?
+1. HashTable is Sysnchronized while HashMap is not 
+2. HashTable is thread-safe while HashMap is not
+3. HahsTable performance is Poor while HashMap performance is high
+4. HashTable doesn't allow 'null' in both (key and value) while HashMap allows 
+
+
+What is the meaning of HashTable is Sysnchronized and thread-safe?
+it means that ==> the HashTable has methods inside it not allowed for two threads to access the same method at the same time.
 
 
 

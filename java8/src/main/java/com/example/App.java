@@ -1,14 +1,20 @@
 package com.example;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
+
 
 
 
@@ -16,6 +22,7 @@ interface Greeting {
 
     void greeting();
 }
+
 
 /* Person Class */
 class Person implements Comparable<Person> {
@@ -350,8 +357,58 @@ public class App {
         linkeddList.add(500); // Acceptable [because LinkedList accepts Heterogenous Data]
         
         System.out.println(linkeddList);
+        System.out.println("------------------");
+        
+        HashMap<Integer,String> hashMap = new HashMap<Integer,String>();
+        
+        hashMap.put(101,"ahmad");
+        hashMap.put(102,"ali");
+        hashMap.put(103,"mahmoud");
+        hashMap.put(104,"ahmad");
+        hashMap.put(105,"Rabeaa");
 
-        System.out.println("=========================================================");
+        System.out.println(hashMap); // {101=ahmad, 102=ali, 103=mahmoud, 104=ahmad, 105=Rabeaa}
+
+        Set<Map.Entry<Integer,String>> entrySet  = hashMap.entrySet();
+
+        System.out.print("{ ");
+        int counter = 0;
+       
+        for(Map.Entry entry : entrySet){
+            counter++;
+            if(counter == entrySet.size()){
+                System.out.print(entry.getKey() + "=" + entry.getValue());
+                break;
+            }
+            System.out.print(entry.getKey() + "=" + entry.getValue() + ", ");
+        }
+        System.out.println("}");
+
+        /* Another way to loop  */
+
+        Iterator it2 = hashMap.entrySet().iterator();
+
+        while(it2.hasNext()){
+            System.out.print(it2.next() + "  ");
+        }
+        
+        System.out.println("------------------");
+        Hashtable hashTable = new Hashtable<>();
+        
+        hashTable.put(101, "ahmad");
+        hashTable.put("age", 29); // acceptable because ==> hashTable is declared with generic HashTable type not a specific one like HashTable<Integer,String>
+        // hashTable.put(null, "ahmad"); // not allowed
+        // hashTable.put(101, null);  // not allowed
+        
+
+        System.out.println(hashTable);
+        for(Object obj : hashTable.keySet()){
+            System.out.println(obj + " : " + hashTable.get(obj));
+        }
+
+
+        
+        System.out.println("\n=========================================================");
         System.out.println("=========================================================");
     }
 }
