@@ -1,5 +1,6 @@
 package com.example;
 
+/* ================= imports ================= */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,12 +15,16 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.function.Predicate;
-
+import java.util.function.Supplier;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.Date;
 
 
 
 
+
+/* ================= Custom Types ================= */
 interface Greeting {
 
     void greeting();
@@ -131,7 +136,7 @@ interface Cab2{
 
 
 
-
+/* ================= Main Class ================= */
 public class App {
 
 
@@ -145,6 +150,8 @@ public class App {
 
     
 
+
+    /* ================= Main Method ================= */
     public static void main(String[] args) {
 
         System.out.println("=========================================================");
@@ -526,7 +533,19 @@ public class App {
         System.out.println(f1.andThen(f2).apply(2)); // 64 ==>  apply the lamda expression on f1 firsly then on f2
         System.out.println(f1.compose(f2).apply(2)); // 16 ==>  apply the lamda expression on f2 firsly then on f2
 
+        /* Consumer */
+        Consumer<String> testConsumer = (s)->System.out.println(s + " is white");
+        Consumer<String> testConsumer2 = (s)->System.out.println(s + " has four legs");
 
+        testConsumer.andThen(testConsumer2).accept("cat");
+        // testConsumer.compose(testConsumer2).accept("cat"); // error : compose is defined for Consumer 
+
+
+        /* supplier */ 
+        Supplier<Date> testSupplier = ()->new Date();
+        System.out.println(testSupplier.get());         // Fri Oct 11 21:48:32 EEST 2024
+
+        
 
 
 

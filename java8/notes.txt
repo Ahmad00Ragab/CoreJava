@@ -279,15 +279,22 @@ Give examples of built-in Functional interfaces in Java?
 3. Comparable<T> ==> compareTo()
 4. ActionListener<T> ==> ActionPerformed()
 
-5. Predicate<T> ==> interface Predicate<T>{ public  boolean test(T t) ;}
+5. Predicate<T>   ==> interface Predicate<T>{ public  boolean test(T t) ;}
 6. Function<T,R>  ==> interface Function<T,R>{ public  R apply(T t) ;}
+7. Consumer<T>    ==> interface Consumer<T>{ public  void accept(T t) ;}
+8. Supplier<R>    ==> interface Supplier<R>{ public  R test() ;}
 
-7. Consumer<T>  ==> // interface Predicate<T>{ public  boolean test(T t) ;}
-8. Supplier<T>  ==> // interface Predicate<T>{ public  boolean test(T t) ;}
 
 What are the methods that we use to achieve Function Chanining?
 andThen()
 compose()
+
+Talk to me about the predefined Built-in Functional interfaces?
+1. Predicate<T>  ==> its abstract method is boolean test(T t) ==> takes one parameter and returns boolean
+2. Function<T,R> ==> its abstract method is R apply(T t) ==> takes one parameter and returns a single result
+3. Consumer<T> ==> its abstract method is void accept(T t)  ==> takes one parameter and returns nothing  
+4. Supplier<R> ==> its abstract method is R get() ==>takes nothing and returns a result of one parameter 
+
 
 
 
