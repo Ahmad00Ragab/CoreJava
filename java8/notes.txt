@@ -1,6 +1,20 @@
 Build process of .java file:
 .java -compiler-> .class -interpreter-> .exe
 
+
+what are the editions of the Java Language?
+1. Java SE ==> Standard Edition(Core java) : General-Purpose Desktop and Server-Side applictations 
+2. Java EE ==> Enterprise Edition(based on SE) : Enterprise, large scale applictations. 
+3. Java ME ==> Micro Edition : develepment for embedded systems , mobile devices etc.
+4. Java FX ==> (was a part from Java SE but now separated) : for GUI apps
+5. Java Card ==> for smart cards and security-related applictations 
+
+what is the difference between Java SE and Java EE?
+the difference in the purpose of usage for both editions:
+1. SE ==> used for general purpose desktop and server-side applictations
+2. EE ==> used for enterprise , large scale and financial applictations.
+
+
 what is the difference between JDK, JRE?
 JDK is the overall or the whole develepment kit, JRE is a part of the JDK.
 JDK : JRE + other develepment tools like javac(compiler), debugger and other things
@@ -40,10 +54,6 @@ The values provided in each case must be unique within that switch statement.
 The break statement is optional, but without it, execution continues into the next case, which is called fall-through behavior. This can sometimes be useful but often leads to bugs if not intended.
 
 important note: static initializer is loaded into memory by the JVM before calling the main method
-
-what is Functional interface?
-it is an interface that contains only one abstract method, and it defines the target types
-of the lamda expression and method reference.
 
 What is the direction of widening? (widening is the opposite of Casting)
 byte --> char --> short--> int --> long--> float --> double
@@ -222,8 +232,67 @@ What is the difference between HashMap and HashTable?
 What is the meaning of HashTable is Sysnchronized and thread-safe?
 it means that ==> the HashTable has methods inside,  it not allowed for two threads to access the same method at the same time.
 
+what is Functional interface?
+it is an interface that contains only one abstract method, and it defines the target types
+of the lamda expression and method reference.
+
+what is lamda expression?
+it is a concise way to create an object from a Functional interface and implement the method inside it 
+at the same time.Also is called "Anonymous Function"
+
+what is Anonymous Function?
+- Function doesn't have a name
+- Function doesn't have a return type
+- Function doesn't have an access modifier
 
 
+what is the normal Function?
+a function on the following sequence:
+public void func(){
+    // statements              ===== [Converted to Anonymous function] ==> () -> {// statements};  // this is the lamda expression
+}                              ===== [Converted to Anonymous function] ==> () -> statement;  // this is the lamda expression for a single statement function
+
+
+what is the method reference?
+it is a shorthand notation to calling the methods by refering to them by their names.
+
+what does we mean when we say java8?
+when we say java8 ==> we talk about a specific version of java which was released in March 2014 and it had 
+very important topics like :
+1. lamda expression & method references
+2. Functional interfaces and @FunctionalInterface annotation 
+3. Streams API 
+4. Default method inside the interface
+5. Optional<T> class
+6. New Date and Time API
+
+what does the lamda expression and Functional interface added to Java?
+- both of them brought the concept of Functional Programming in Java.
+- Code Optimazaion (concise code)
+
+what is the difference between the OOP and Functional Programming in the Concept of data?
+in OOP the Data is repersented by (Class & Objects) but in FP Data is repersented by (Functions & Variables)
+
+Give examples of built-in Functional interfaces in Java?
+1. Runnable<T> ==> run()
+2. Callable<T> ==> call()
+3. Comparable<T> ==> compareTo()
+4. ActionListener<T> ==> ActionPerformed()
+
+5. Predicate<T> ==> interface Predicate<T>{ public  boolean test(T t) ;}
+6. Function<T,R>  ==> interface Function<T,R>{ public  R apply(T t) ;}
+
+7. Consumer<T>  ==> // interface Predicate<T>{ public  boolean test(T t) ;}
+8. Supplier<T>  ==> // interface Predicate<T>{ public  boolean test(T t) ;}
+
+What are the methods that we use to achieve Function Chanining?
+andThen()
+compose()
+
+
+
+can we use the lamda expression without using the functional interface?
+No, we can't ==> use lamda expression meaning calling the method that is abstract inside the functional interface
 
 
 
@@ -235,3 +304,5 @@ it means that ==> the HashTable has methods inside,  it not allowed for two thre
 Refs Links :
 Collections Course
 1. https://www.youtube.com/watch?v=hKhlkx_6HeI&list=PLUDwpEzHYYLu9-xrx5ykNH8wmN1C1qClk&ab_channel=SDET-QA
+2. https://www.youtube.com/watch?v=MMruoVq6160&list=PLUDwpEzHYYLtNoZUJaRJfCktwjVtOwIk3&ab_channel=SDET-QA
+3. https://www.youtube.com/watch?v=33JrZGtKOEE&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&ab_channel=SDET-QA

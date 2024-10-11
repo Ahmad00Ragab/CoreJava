@@ -1,6 +1,5 @@
 package com.example;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.function.Predicate;
+
+import java.util.function.Function;
 
 
 
@@ -99,6 +101,31 @@ class Example {
         System.out.println("Instance field initialized");
         return 2;
     }
+}
+
+class Employee{
+    String name;
+    int salary;
+    int age;
+
+    public Employee(String name, int salary, int age){
+        this.name = name;
+        this.salary = salary;
+        this.age = age;
+    }
+}
+
+
+/* Functional Interfaces */
+
+@FunctionalInterface
+interface Cab{
+    public void abstractMethod1();    
+}
+
+@FunctionalInterface
+interface Cab2{
+    public String abstractMethod2(String name, int age);    
 }
 
 
@@ -406,9 +433,105 @@ public class App {
             System.out.println(obj + " : " + hashTable.get(obj));
         }
 
+        System.out.println("=========================================================");
+        System.out.println("=========================================================");
+        
+        Cab cab = () -> System.out.println("Hello, From First Labmda Expression!");
+        cab.abstractMethod1();
+
+        Cab2 cab2 = (name,age)->{
+            System.out.println("name: " + name + "\tage: " + age);
+            return "Success"; 
+        };
+        System.out.println(cab2.abstractMethod2("Ahmad",29));
+
+        /* Built-in Functional Interfaces */
+        Predicate<Integer> objPredicate = (i)->(i<30);
+        System.out.println(objPredicate.test(26));
+        System.out.println(objPredicate.test(36));
+
+
+        System.out.println("---------------");
+        Predicate<String> objPredicate2 = (s) -> (s.length() > 5);
+        System.out.println(objPredicate2.test("Welcome"));
+        System.out.println(objPredicate2.test("xyz"));
+
+        Employee emp = new Employee("ahmad", 35000, 29);
+        Predicate<Employee> empPredicate = (e)->(e.salary>3000 || e.age>25);
+        System.out.println(empPredicate.test(emp));
+
+        ArrayList<Employee> arrayList = new ArrayList<Employee>();
+
+        arrayList.add(new Employee("ali", 70000, 59));
+        arrayList.add(new Employee("ahmad", 50000, 44));
+        arrayList.add(new Employee("mohamed", 24000, 72));
+        arrayList.add(new Employee("sayed", 50000, 25));
+        
+
+        for(Employee e : arrayList){
+            if(empPredicate.test(e)){
+                System.out.println("name : " + e.name + "\t" + "age : "+ e.age);
+            }
+        }
+
+        int[] newArr = {50,66,9,15,0,458,16,13};
+        
+        Predicate<Integer> arrPredicate1 = (i)->(i%2==0);
+        Predicate<Integer> arrPredicate2 = (i)->(i>=50);
+
+        for(int i : newArr){
+            // if(arrPredicate1.test(i) && arrPredicate2.test(i)){
+            if(arrPredicate1.and(arrPredicate2).test(i)){ // Combined Predicate
+                System.out.println(i);
+            }
+        }
+
+        /* negate() */
+        System.out.println("---------------");
+        for(int i : newArr){
+            if(arrPredicate1.negate().test(i)){
+                System.out.println(i);
+            }
+        }
+
+        System.out.println("---------------");
+        Function<Integer,Integer> functionInterface = (i)->(i*i);
+        System.out.println(functionInterface.apply(10));  
+        
+        Function<String, Integer> functionInterface2 = (s)->s.length();
+        System.out.println(functionInterface2.apply("Welcome to my home!"));  
+
+        Function<Employee,Integer> empFunction= (e)->{
+            if(e.salary>10000  && e.salary<20000)
+                return (20*e.salary/100);
+            else if(e.salary>=20000  && e.salary<30000)
+                return (5*e.salary/100);  
+            else{
+                return (2*e.salary/100);
+            }
+        };
+        
+        for(Employee e : arrayList){
+            System.out.println("Bounus : " + empFunction.apply(e));
+        }
+        
+        System.out.println("---------------------");
+        Function<Integer,Integer> f1 = (n)->n*2;
+        Function<Integer,Integer> f2 = (n)->n*n*n;
+
+        /*
+         * andThen()
+         * compose()
+         */
+        System.out.println(f1.andThen(f2).apply(2)); // 64 ==>  apply the lamda expression on f1 firsly then on f2
+        System.out.println(f1.compose(f2).apply(2)); // 16 ==>  apply the lamda expression on f2 firsly then on f2
+
+
+
+
 
         
-        System.out.println("\n=========================================================");
+        System.out.println("=========================================================");
         System.out.println("=========================================================");
     }
 }
