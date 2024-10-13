@@ -295,11 +295,58 @@ Talk to me about the predefined Built-in Functional interfaces?
 3. Consumer<T> ==> its abstract method is void accept(T t)  ==> takes one parameter and returns nothing  
 4. Supplier<R> ==> its abstract method is R get() ==>takes nothing and returns a result of one parameter 
 
-
-
-
-can we use the lamda expression without using the functional interface?
+Can we use the lamda expression without using the functional interface?
 No, we can't ==> use lamda expression meaning calling the method that is abstract inside the functional interface
+
+
+/* Streams */
+what is the difference between streams inside the java.util.stream package and streams that is existed in java.io.stream package?
+in Summary, streams api in java.util.stream is used with Collections and objects to use the concepts of functional programming but
+in java.io.streams ==> it is used to perform i/o operations on files, network sockets etc.
+
+what is the usage of the Streaming Concept?
+Streaming concept is used to process the data inside a collection.
+
+what are the mechanisms that we use to process the data in collections in java.util.streams APi?
+1. filter mechanism
+2. map mechanism
+and also other processing mechanisms
+
+
+what are the methods that we can use on the objects inside the stream?
+1. sorted()
+2. count()
+3. collect()
+4. distinct()
+5. forEach()
+6. min()
+7. max()
+
+Can i open a stream on a normal array not ArrayList?
+yes , we can by using the two methods Arrays.stream(take_the_array) and Stream.of(take_the_array) and both methods returns a stream
+
+what is the difference between Arrays.stream() and Stream.of() ?
+Arrays.stream() ==> used with array of objects and also with array of primitives but
+Stream.of()     ==> used with array of objects also.
+
+what is the difference beween asList() and toList()?
+1. asList() from Arrays.asList() ==> defined in  java.util.Arrays class
+   toList() from Collector.toList() ==> defined in java.util.stream.Collectors class.
+
+2. asList() : returns fixed-size ArrayList backed with the original array (any change in this ArrayList will be refelected in the original array)
+   toList() : returns mutable ArrayList 
+
+
+what is the map() method inside the stream interface?
+it is an intermediate method and it is used to transform each element inside the stream from one form to another.
+
+what is the difference between the map() and flatmap()?
+map()     : transform each element in a stream into the another from  of it resulting in a stream containing the whole transformed elements 
+flatmap() : transform each element in a stream into a stream its self and then flatten those resulting streams into a single stream.
+
+what are the types of operations in streams?
+1. terminal operations     :it is an eager operation and it terminates the stream
+2. intermediate operations :lazy operation and it produces a new stream of objects  
 
 
 
