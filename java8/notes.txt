@@ -1,7 +1,6 @@
 Build process of .java file:
 .java -compiler-> .class -interpreter-> .exe
 
-
 what are the editions of the Java Language?
 1. Java SE ==> Standard Edition(Core java) : General-Purpose Desktop and Server-Side applictations 
 2. Java EE ==> Enterprise Edition(based on SE) : Enterprise, large scale applictations. 
@@ -13,7 +12,6 @@ what is the difference between Java SE and Java EE?
 the difference in the purpose of usage for both editions:
 1. SE ==> used for general purpose desktop and server-side applictations
 2. EE ==> used for enterprise , large scale and financial applictations.
-
 
 what is the difference between JDK, JRE?
 JDK is the overall or the whole develepment kit, JRE is a part of the JDK.
@@ -340,7 +338,7 @@ what is the difference beween asList() and toList()?
 what is the map() method inside the stream interface?
 it is an intermediate method and it is used to transform each element inside the stream from one form to another.
 
-what is the difference between the map() and flatmap()?
+what is the difference between the map() and flatMap()?
 map()     : transform each element in a stream into the another from  of it resulting in a stream containing the whole transformed elements 
 flatmap() : transform each element in a stream into a stream its self and then flatten those resulting streams into a single stream.
 
@@ -348,6 +346,32 @@ what are the types of operations in streams?
 1. terminal operations     :it is an eager operation and it terminates the stream
 2. intermediate operations :lazy operation and it produces a new stream of objects  
 
+
+Give examples of Terminal operations and intermediate operations?
+/* =========== intermediate operations =========== */
+1. filter() 
+2. map()
+3. flatMap()
+4. limit(number)
+5. distinct()
+6. sorted()
+7. skip(number)
+/* =========== terminal operations =========== */
+1. collect()
+2. count()
+3. min()
+4. max()
+5. forEach()
+6. reduce()
+7. toArray()
+8. anyMatch()
+9. allMatch()
+10.noneMatch()
+
+
+What is the meaning of concatenating the streams?
+concatenating streams means combining two streams into a single stream. in the new stream the elements of the first 
+stream to be concatenated comes first after that the elements of the second stream.
 
 
 

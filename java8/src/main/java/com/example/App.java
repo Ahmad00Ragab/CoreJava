@@ -1,5 +1,6 @@
 package com.example;
 
+import java.lang.reflect.Array;
 /* ==============================================  imports ====================================== */
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,10 +14,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 import jakarta.el.ArrayELResolver;
 import jakarta.faces.event.SystemEvent;
@@ -202,11 +207,17 @@ class Student{
     String name;
     int id;
     char grade;
+    int score;
 
     public Student(String name, int id, char grade){
         this.name = name;
         this.id = id;
         this.grade= grade;
+    }
+
+    public Student(String name, int score){
+        this.name = name;
+        this.score = score;
     }
 }
 
@@ -733,10 +744,87 @@ public class App {
         System.out.println("flatMap() with    mapping : " + studList.stream().flatMap(obj->obj.stream().map(o->o.name)).collect(Collectors.toList()));
         System.out.println("flatMap() count           : " + studList.stream().flatMap(obj->obj.stream().map(o->o.name)).collect(Collectors.toList()));
 
+        System.out.println("-----------------------");
+        List<Integer> numbersList1 = Arrays.asList(1,56,9,0,15,32,78,9,4,156);
+        System.out.println("Ascending  Order : " + numbersList1.stream().sorted().collect(Collectors.toList()));
+        System.out.println("descending Order : " + numbersList1.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()));
         
+    
+        Set<String> newSet = new HashSet<String>(Arrays.asList("mango","orange","juava","mariguana","banana","mango"));
+        System.out.println(newSet);
+
+        System.out.println("orange : " + newSet.stream().anyMatch(value->{return value.equals("orange");}));
+        System.out.println("orange : " +newSet.stream().allMatch(value->{return value.equals("orange");}));
+        System.out.println("orange : " +newSet.stream().noneMatch(value->{return value.equals("orange");}));
+
+        List<String> list3 = Arrays.asList("one","two","three","four");
+        //List<String> list3 = Arrays.asList(); ==> in case of empty list, no exception is thrown  
+        System.out.println(list3.stream().findAny()); // returns any element it faces 
+
+
+        /* =========== Streams Concatenation  =========== */
+        List<String> concatStream1 = Arrays.asList("one","two","three","four");
+        List<String> concatStream2 = Arrays.asList("five","six","seven","eight");
+
+        Stream<String> streamA = concatStream1.stream();
+        Stream<String> streamB = concatStream2.stream();
+        
+        Stream<String> resultStram = Stream.concat(streamA, streamB);
+        System.out.println(resultStram.collect(Collectors.toList()));
+    
+
+        /* ========= Parrallel Streams ========= */ 
+        List<Student> studentList = Arrays.asList(
+            new Student("ahmad", 96),  
+            new Student("mahmoud", 97),  
+            new Student("tamer", 98),  
+            new Student("ali", 97),  
+            new Student("abdo", 99)  
+        );
+
+       // sequential strams
+       studentList.stream().
+                    filter(st->st.score>98).
+                    limit(1)
+                    .forEach(e->System.out.println("name : " + e.name + "\t" + " Score : " + e.score));
+
+                    
+
+       // parallel streaming
+       studentList.parallelStream().filter(st -> st.score > 98)
+                .limit(1)
+                .forEach(e -> System.out.println("name : " + e.name + "\t" + " Score : " + e.score));
+
+
+
+        /* ========= measuring the performance between sequential streaming and parallel streaming  =========  */
+        // Create a large list of random numbers (size: 10 million)
+        List<Integer> numbersList = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 10_000_000; i++) {
+            numbersList.add(random.nextInt(100));  // Random numbers between 0 and 100
+        }
+
+        // Sequential stream performance
+        long startTimeSequential = System.currentTimeMillis();
+        long countSequential = numbersList.stream()
+                                          .filter(num -> num > 50)   // Filtering numbers greater than 50
+                                          .count();                  // Count the filtered numbers
+        long endTimeSequential = System.currentTimeMillis();
+        System.out.println("Sequential Stream Count: " + countSequential);
+        System.out.println("Time taken by Sequential Stream: " + (endTimeSequential - startTimeSequential) + " ms");
+
+        // Parallel stream performance
+        long startTimeParallel = System.currentTimeMillis();
+        long countParallel = numbersList.parallelStream()
+                                        .filter(num -> num > 50)     // Filtering numbers greater than 50
+                                        .count();                    // Count the filtered numbers
+        long endTimeParallel = System.currentTimeMillis();
+        System.out.println("Parallel Stream Count: " + countParallel);
+        System.out.println("Time taken by Parallel Stream: " + (endTimeParallel - startTimeParallel) + " ms");
 
         
-        
+
 
         System.out.println("=========================================================");
         System.out.println("=========================================================");
