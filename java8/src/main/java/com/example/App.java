@@ -149,6 +149,7 @@ class Example {
     }
 }
 
+
 class Employee {
     String name;
     int salary;
@@ -267,7 +268,6 @@ public class App {
             public void greeting() {
                 System.out.println("Annonymous,!");
             }
-
         };
         annonymous.greeting();
 
@@ -295,7 +295,7 @@ public class App {
 
         /* Copying arrays elements */
         int[] arr1 = { 1, 2, 3, 4, 5 };
-        int[] arr2 = Arrays.copyOf(arr1, 3);
+        int[] arr2 = Arrays.copyOf(arr1, 3); 
         System.out.println("arr1: " + Arrays.toString(arr1));
         System.out.println("arr2: " + Arrays.toString(arr2));
 
@@ -385,14 +385,15 @@ public class App {
         System.out.println(al.size());
 
         /* Looping over a collection */
-
         /* normal for loop */
         for (int i = 0; i < al.size(); i++) {
             System.out.println(al.get(i));
         }
+
         /* enhanced for loop */
         for (var v : al)
             System.out.println(v);
+
         /* iterator */
         Iterator it = al.iterator();
         while (it.hasNext()) {
@@ -436,6 +437,7 @@ public class App {
 
         System.out.println(linkedList);
 
+
         System.out.println("------------------");
         HashSet<String> hash = new HashSet<String>(); //
 
@@ -445,11 +447,11 @@ public class App {
         hash.add("C");
         hash.add("W");
         hash.add("X");
-
-        System.out.println(hash.contains("P"));
+        System.out.println(hash.contains("P")); 
         System.out.println(hash); // [P, C, F, W, X, O]
 
-        // if you want to sort the hastset ==> convet it to list and sort
+
+        // if you want to sort the hashset ==> convet it to list and sort
         List list = new ArrayList<>(hash);
         System.out.println(list); // [P, C, F, W, X, O]
         Collections.sort(list);

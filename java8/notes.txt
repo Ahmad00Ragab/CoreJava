@@ -25,7 +25,7 @@ JIT compiler : helps in the interpreter in its job by compiling the bytecode (.c
 
 
 what is the difference between compareTo(), equals() and == ?
-1. compareTo() : used to sort objects in collections, exists in Comparable interface and return interface  ==> int compareTo(T o)
+1. compareTo() : used to sort objects in collections, exists in Comparable interface ==> int compareTo(T o)
 2. equals()    : used to check the logical equality of the objects, the objects contains the same data, exists in 'Object' super class 
 3. ==          : used to check if the ref variables of two objects are the same or not (existed in the same place in memory)
 
@@ -42,7 +42,7 @@ what are primitive data types in java?
 5.  long (8 byte):default ==> 0
 7.  float (4 byte): default ==> 0.0
 8.  double (8 byte):default ==> 0.0
-9.  boolean ( unkown):default ==> false
+9.  boolean (unkown):default ==> false
 10. String : null ==> special literal that is assigned to any ref variables
 
 (switch Case)
@@ -109,7 +109,7 @@ what are the classes that implemented the 'Set' interface?
 
 what is the characterstics of Queue?
 - Queue extends the Collection interface
-- insertion order is preserved in some implementations like (LinkedList,ArrayDeque,ConcurrentLinkedQueue) and not allow in other implementations like (PriorityQueue) 
+- insertion order is preserved in some implementations like (LinkedList,ArrayDeque,ConcurrentLinkedQueue) and not preserved in other implementations like (PriorityQueue) 
 - duplicates allowed 
 
 what are the classes that implemented the 'Queue' interface?
@@ -207,7 +207,7 @@ HashMap map = new HashMap();
 1. map.put(key,value)
 2. map.putAll(Map m)
 3. map.remove(key)
-4. map.get(key) ==> returns an value
+4. map.get(key) ==> returns a value
 5. map.containsKey(key)
 6. map.containsValue(value)
 7. map.size()
@@ -280,7 +280,7 @@ Give examples of built-in Functional interfaces in Java?
 5. Predicate<T>   ==> interface Predicate<T>{ public  boolean test(T t) ;}
 6. Function<T,R>  ==> interface Function<T,R>{ public  R apply(T t) ;}
 7. Consumer<T>    ==> interface Consumer<T>{ public  void accept(T t) ;}
-8. Supplier<R>    ==> interface Supplier<R>{ public  R test() ;}
+8. Supplier<R>    ==> interface Supplier<R>{ public  R get() ;}
 
 
 What are the methods that we use to achieve Function Chanining?
@@ -329,7 +329,7 @@ Stream.of()     ==> used with array of objects also.
 
 what is the difference beween asList() and toList()?
 1. asList() from Arrays.asList() ==> defined in  java.util.Arrays class
-   toList() from Collector.toList() ==> defined in java.util.stream.Collectors class.
+   toList() from Collectors.toList() ==> defined in java.util.stream.Collectors class.
 
 2. asList() : returns fixed-size ArrayList backed with the original array (any change in this ArrayList will be refelected in the original array)
    toList() : returns mutable ArrayList 
@@ -356,6 +356,7 @@ Give examples of Terminal operations and intermediate operations?
 5. distinct()
 6. sorted()
 7. skip(number)
+
 /* =========== terminal operations =========== */
 1. collect()
 2. count()
