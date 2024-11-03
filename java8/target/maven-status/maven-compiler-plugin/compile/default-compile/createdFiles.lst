@@ -1,12 +1,4 @@
-com\example\Example.class
-com\example\OuterClass$InnerClass.class
-com\example\Employee.class
-com\example\OuterClass.class
-com\example\App.class
-com\example\App$1.class
-com\example\Cab.class
-com\example\Student.class
-com\example\Cab2.class
-com\example\Greeting.class
-com\example\Person.class
-com\example\Product.class
+com\example\Pair.class
+com\example\GenericBox.class
+com\example\GenericsConcurrency.class
+com\example\PairImpl.class

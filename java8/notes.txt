@@ -110,6 +110,13 @@ what are the classes that implemented the 'Set' interface?
 2. LinkedHashSet
 
 
+How the HashSet and the LinkedHashSet handles the no duplication insertion?
+when there is an element to be inserted, the hashcode is computed for it using the hashcode method existed in the super 'Object' class
+and if there is an element with the same hashcode in the set, then the equals method is called to check if 
+they are the same object or not. If they are the same object, then the element is not added to the set. If they are not the same object,
+then the element is added.
+
+
 what is the characterstics of Queue?
 - Queue extends the Collection interface
 - insertion order is preserved in some implementations like (LinkedList,ArrayDeque,ConcurrentLinkedQueue) and not preserved in other implementations like (PriorityQueue) 
@@ -118,6 +125,12 @@ what is the characterstics of Queue?
 what are the classes that implemented the 'Queue' interface?
 1. PriorityQueue   
 2. LinkedList
+
+
+important note : PriorityQueue is by default a min-heap PriorityQueue which means that the element  with the smallest value will be at the top of the queue  (highest priority). 
+If you want to use a max-heap PriorityQueue, you can pass a comparator to the PriorityQueue constructor. 
+PriorityQueue<Integer> maxHeap =new PriorityQueue<Integer>(Comparator.reverseOrder());
+
 
 
 what are the characterstics of 'Map' interface?
@@ -232,6 +245,13 @@ What is the difference between HashMap and HashTable?
 
 What is the meaning of HashTable is Sysnchronized and thread-safe?
 it means that ==> the HashTable has methods inside,  it not allowed for two threads to access the same method at the same time.
+
+How to loop over Map(HashMap or HashTable)?
+both have methods:
+m.keySet() ==>   returns a Set of Keys Objects and we use  it like this: for (Object key : m.keySet()){m.get(key)}
+m.values() ==>   returns all the Values as a Collection and we use it like this: for (Object value : m.values){print the value}
+m.entrySet() ==>   returns a Set of Entries and we use it like this: for (Map.Entry entry : m.entrySet){entry.getValue()};
+
 
 what is Functional interface?
 it is an interface that contains only one abstract method, and it defines the target types
@@ -354,7 +374,6 @@ eager operation : it is an operation that is performed immediately when it is en
 lazy operation  : it is an operation that is performed when it is actually needed (like when invoking the termainal operation) and it is lazy.
 
 
-
 Give examples of Terminal operations and intermediate operations?
 /* =========== intermediate operations =========== */
 1. filter() 
@@ -388,6 +407,100 @@ Collector   :  it is an interface that is used to collect the elements of a stre
 What is the meaning of concatenating the streams?
 concatenating streams means combining two streams into a single stream. in the new stream the elements of the first 
 stream to be concatenated comes first after that the elements of the second stream.
+
+
+how is the parallel streams works?
+instead of calling the .stream() [which is sequenctial streaming] method we call the .parallel() or .parallelStream() method
+and this divides the soruce of data (collection data) into chuncks  and each chunk is processed in a separate thread.
+
+
+What is the difference between the lists that comes from : 1. Arrays.asList()  2. List.of()   3. Collector.toList() ?
+1. Arrays.asList() : it is a method that returns a fixed-size list backed by the specified array. it is (mutable in data but not in size).
+2. List.of() : returns an immutable list (size and data cannot be changed)
+3. Collector.toList() : returns a mutable list (size and data can be changed) but it is not  an ArrayList. it is a List implementation that is backed by a dynamic array.
+
+
+
+/* ==================== Exceptions ====================== */
+What are exceptions?
+exceptions are runtime errors and when this error happens, a new object is created containing
+the information about the error and this object is thrown to the caller of the method in which the error happened.
+
+
+What are the types of Exceptions?
+Checked   Exceptions : checked at compiled time and must be handled for the code to be  compiled.
+Unchecked Exceptions : programming errors that  are not checked at compile time and are not required to be handled (need to be fixed) not to fires in runtime (inherits from RuntimeException Class).
+
+/* ======================= Generics =========================== */
+What is Generics Concept?
+Generics allow you to define a class, interface, or method with a placeholder for the type of data it operates on.
+This enables you to create classes and methods that can work with any data type while ensuring type safety at compile time.
+
+
+Can i create a static generic variale?
+No, i can't ==> private T instanceVar;    // Compile time error 
+
+Can i create an array of generic  type?
+No, we can't : T[] arr = {}; // error 
+
+what is Bounded Type Parameter?
+when you make the generic type (T) specific to some conditions like (Must be a subclass of specific type)
+like : <T extends Number> ==> this means this type T must be extend the Number class which is super class for (Integer, Float, etc)
+
+what are the types of wildcards in Generics?
+1.  Unbounded Wildcard : <?> (any type (unkown))
+2.  Upper Bounded Wildcard : <? extends Number> (any type that is a subclass of  Number)
+3.  Lower Bounded Wildcard : <? super Number> (any type that is a superclass of Number)
+
+/* ====================== Threads and Concurrency ========================= */
+What is the difference between process and thread?
+Process: it is an instance of a program running on a computer system with its own memory space and resources.
+Thread : A unit of execution within a process, capable of executing the code independently and sharing the resources with other threads in the same process.
+
+What are the states of lifecycle of the thread?
+1. New : Thread is created but not started yet. ==> Thread t1 = new Thread(Main::methodName); // a concise way to create the thread by using method ref
+2. Runnable : Thread is ready to run  and waiting for the CPU to execute it. ==> after calling the t1.start() method
+3. Blocked  : waiting for a resource to be released by another thread
+4. Waiting  : waiting for another thread to perform an action like (join())  
+5. Timed Waiting : waiting of a timed time like (sleep(timed))
+6. Terminated : Thread is finished and no longer running. run() method is complete 
+
+What are the thread scheduling mechanisms?
+1. preemptive scheduling : the os can interrupt the current thread to allow another thread to run 
+2. time slicing : the os gives each thread a time slice to run and then switches to another thread.
+
+How to create a thread object?
+
+public ClassName{
+   public static void MethodThatRunWhenThreadStart(){
+      // do som work when the thread is working 
+   }
+}
+
+Thread  t1 = new Thread(ClassName::MethodThatRunWhenThreadStart);
+
+what are the challenges that we face when dealing with threads?
+1. race condition : when there is a race between two threads on a shared resource
+2. deadlock       : when two threads waits each other forever to release a shared resource  
+3. starvation     : when the thread takes a shared resource and doesn't let it 
+
+what are the mechanisms that we make to face the challenges?
+1. Synchronization: using the synchronized keyword to lock the shared resource (Synchronized)
+2. Locks          : using the ReentrantLock class to lock the shared resource
+3. Atomic         : using the Atomic classes to update the shared resource in a thread-safe way
+4. Thread Pools   : using the ExecutorService to manage the threads and avoid the overhead of creating a new thread for each task.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
