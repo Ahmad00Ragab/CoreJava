@@ -65,10 +65,12 @@ no, it is used only with local variables inside the method.
 
 
 what is the sequence of executing the class members?
-1. static initializers & static fields (Whatever comes first)
-2. calling the main method
-3. non-static initializers & instance fields (Whatever comes first)
-4. constructor
+1. static fields 
+2. static initializers 
+3. calling the main method
+4. instance fields 
+5. non-static initializers
+6. constructor
 
 /* =============== Collections ============== */
 what is a collection?
@@ -78,6 +80,7 @@ what are the problems that we faced in arrays that motivated us to use collectio
 1. fixed size (not growable in runtime)
 2. doesn't use underlying data structure so, no ready-made methods to work on it 
 3. contains homogenous data 
+
 
 what are the main interfaces that we have in the  Java Collection Framework(JCF)?
 1. Collection (root interface for all collections interfaces except Map interface)
@@ -93,8 +96,8 @@ what is the characterstics of List?
 
 what are the classes that implemented the 'List' interface?
 1. ArrayList
-2. Vector --> Stack
-3. LinkedList
+2. LinkedList
+3. Vector --> Stack
 
 
 what is the characterstics of Set?
@@ -138,7 +141,7 @@ Collection col; // this is not permitted but for example:
 2. col.addAll(Collection c)
 3. col.remove(Object)
 4. col.removeAll(Collection)
-5. col.retainAll(Collection) ==> remove all the objects inside the Collection except the incoming 
+5. col.retainAll(Collection) ==> remove all the objects inside the Collection except the incoming collection
 6. col.clear()
 7. col.isEmpty()
 8. col.size()
@@ -165,13 +168,13 @@ what are the methods that the ArrayList class added?
 6. getLast()
 
 what is the difference between the following declaraionts:
-1. ArrayList al = new ArrayList(); ==> stores any kind of objects (hetergenous Data) 
+1. ArrayList al = new ArrayList<>(); ==> stores any kind of objects (hetergenous Data) 
 2. ArrayList<String> al = new ArrayList<>(); ==> stores only Strings ==> (homogenous Data)
 
 
 which is better in performance ArrayList or LinkedList?
-- ArrayList is better when there is a lot of retreival  (al.get()) 
-- LinkedList is better when there is a lot of insertion (ls.set())
+- ArrayList is better when there is a lot of retreival  (al.get())  
+- LinkedList is better when there is a lot of insertion (ls.set()) 
 
 For the implementations of the 'Set' interface : HashSet inertion order is not preserved
 so what is the mechanism that it uses in insertion?
@@ -343,8 +346,13 @@ map()     : transform each element in a stream into the another from  of it resu
 flatmap() : transform each element in a stream into a stream its self and then flatten those resulting streams into a single stream.
 
 what are the types of operations in streams?
-1. terminal operations     :it is an eager operation and it terminates the stream
-2. intermediate operations :lazy operation and it produces a new stream of objects  
+1. terminal operations     :it is an eager operation and it terminates the stream (consumed it)
+2. intermediate operations :lazy operation and it produces a new stream of objects
+
+what is the meaning of eager and lazy operation?
+eager operation : it is an operation that is performed immediately when it is encounterd and it is executed.
+lazy operation  : it is an operation that is performed when it is actually needed (like when invoking the termainal operation) and it is lazy.
+
 
 
 Give examples of Terminal operations and intermediate operations?
@@ -370,18 +378,23 @@ Give examples of Terminal operations and intermediate operations?
 10.noneMatch()
 
 
+what is the difference between Collection, Collections, Collector?
+Collection  :  it is an interface that is used to store the collection of objects.
+Collections :  it is a class that contains the static methods for performing various operations on collections.
+Collector   :  it is an interface that is used to collect the elements of a stream into a collection.
+
+
+
 What is the meaning of concatenating the streams?
 concatenating streams means combining two streams into a single stream. in the new stream the elements of the first 
 stream to be concatenated comes first after that the elements of the second stream.
 
 
 
-
-
-
-
 Refs Links :
 Collections Course
 1. https://www.youtube.com/watch?v=hKhlkx_6HeI&list=PLUDwpEzHYYLu9-xrx5ykNH8wmN1C1qClk&ab_channel=SDET-QA
+Lamda  Expression Course
 2. https://www.youtube.com/watch?v=MMruoVq6160&list=PLUDwpEzHYYLtNoZUJaRJfCktwjVtOwIk3&ab_channel=SDET-QA
+Streams Course
 3. https://www.youtube.com/watch?v=33JrZGtKOEE&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&ab_channel=SDET-QA

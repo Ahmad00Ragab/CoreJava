@@ -1,6 +1,8 @@
 package com.example;
 
 import java.lang.reflect.Array;
+
+
 /* ==============================================  imports ====================================== */
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,31 +20,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 import java.util.stream.Stream;
-
-import jakarta.el.ArrayELResolver;
-import jakarta.faces.event.SystemEvent;
-
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.Date;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -120,7 +103,7 @@ class Example {
 
     // Fields : static fields & instance fields
     private static int staticField = initializeStaticField();
-    private int instanceField = initializeInstanceField();
+    private int instanceField      = initializeInstanceField();
 
     // Initializer Blocks : static & instance
     static {
@@ -288,6 +271,7 @@ public class App {
             System.out.println(p);
         }
 
+
         /* Class Litteral */
         System.out.println("---------------------");
         Class<String> stringClass = String.class;
@@ -367,12 +351,12 @@ public class App {
         System.out.println("single?:  " + arr[2]);
 
         // print them as list
-        System.out.println(Arrays.asList(arr));
+        System.out.println(Arrays.toString(arr));
 
         System.out.println("---------------------");
 
         ArrayList al = new ArrayList<>();
-        // ArrayList<String> al = new ArrayList<>(); // for this the add(Integer) and
+        // ArrayList<String> al = new ArrayList<>(); // for this the al.add(Integer) and
         // add(Double) gives " Error "
 
         al.add("welcome");
