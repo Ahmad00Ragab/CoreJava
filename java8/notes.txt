@@ -470,7 +470,6 @@ What are the thread scheduling mechanisms?
 2. time slicing : the os gives each thread a time slice to run and then switches to another thread.
 
 How to create a thread object?
-
 public ClassName{
    public static void MethodThatRunWhenThreadStart(){
       // do som work when the thread is working 
