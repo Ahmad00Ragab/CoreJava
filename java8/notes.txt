@@ -1,3 +1,4 @@
+/* ================================================== Core Java ===================================================== */
 Build process of .java file:
 .java -compiler-> .class -interpreter-> .exe
 
@@ -8,20 +9,41 @@ what are the editions of the Java Language?
 4. Java FX ==> (was a part from Java SE but now separated) : for GUI apps
 5. Java Card ==> for smart cards and security-related applictations 
 
+
 what is the difference between Java SE and Java EE?
 the difference in the purpose of usage for both editions:
 1. SE ==> used for general purpose desktop and server-side applictations
 2. EE ==> used for enterprise , large scale and financial applictations.
+
+when i say Java Platform , what does it means?
+1. JAVA progrmming Language
+2. JVM (Java Virtual Machine)
+3. Java API libraries
+
 
 what is the difference between JDK, JRE?
 JDK is the overall or the whole develepment kit, JRE is a part of the JDK.
 JDK : JRE + other develepment tools like javac(compiler), debugger and other things
 JRE : JVM + core libraries and and other components used to run the software 
 
+
 What does the JVM include?
 interpreter  : interpret the .class file to native code of the hosting machine
 class loader : loads the .class file into memory 
-JIT compiler : helps in the interpreter in its job by compiling the bytecode (.class) into native code to deliver it to the interpreter
+JIT compiler : helps the interpreter in its job by compiling the bytecode (.class) into native code to deliver it to the interpreter
+
+
+
+what are the parts of the memory that JAVA uses?
+1. Stack      : stores the local variables and the method call stack frame which include (local variables , method parameters, return addresses)
+2. Heap       : stores the objects and the arrays and instance variables 
+3. Method Area(part of the JVM memory): stores the class information and the class-level data (static variable, static blocks , static methods) and bytecode of the non-static methods
+
+what are the method call information?
+method call information are such as (such as parameters local variables and return addresses) and stored in stack memory.
+each method is called , the method takes its own "stack frame" in the stack containing its local variables, parameters,
+and return address. These are automatically freed when the method exits.
+
 
 
 what is the difference between compareTo(), equals() and == ?
@@ -47,7 +69,7 @@ what are primitive data types in java?
 
 (switch Case)
 Notes on the case clause:
-Each case must contain a constant expression (like a literal or an enum value).
+Each case must contain a constant expression (like a literal or final or an enum value).
 The values provided in each case must be unique within that switch statement.
 The break statement is optional, but without it, execution continues into the next case, which is called fall-through behavior. This can sometimes be useful but often leads to bugs if not intended.
 
@@ -358,6 +380,16 @@ what is the difference beween asList() and toList()?
    toList() : returns mutable ArrayList 
 
 
+what is Collector and Collectors?
+Collector   : is an interface that is used to accumulate the elements of a stream into a collection, map.
+Collectors  : is a class that contains static methods that return Collector instances. ==> we use it in the stream (Collectors.toList())
+
+what is Collection and Collections?
+Collection  : is an interface that represents a group of objects known as elements or entries.
+Collections : is a class that contains static methods that operate on collections.
+Collections.sort(List<String>);
+
+
 what is the map() method inside the stream interface?
 it is an intermediate method and it is used to transform each element inside the stream from one form to another.
 
@@ -366,8 +398,9 @@ map()     : transform each element in a stream into the another from  of it resu
 flatmap() : transform each element in a stream into a stream its self and then flatten those resulting streams into a single stream.
 
 what are the types of operations in streams?
-1. terminal operations     :it is an eager operation and it terminates the stream (consumed it)
-2. intermediate operations :lazy operation and it produces a new stream of objects
+1. terminal operations     : it is an eager operation and it terminates the stream (consumed it)
+2. intermediate operations : lazy operation and it produces a new stream of objects
+
 
 what is the meaning of eager and lazy operation?
 eager operation : it is an operation that is performed immediately when it is encounterd and it is executed.
@@ -397,10 +430,11 @@ Give examples of Terminal operations and intermediate operations?
 10.noneMatch()
 
 
-what is the difference between Collection, Collections, Collector?
+what is the difference between Collection, Collections, Collector,Collectors?
 Collection  :  it is an interface that is used to store the collection of objects.
 Collections :  it is a class that contains the static methods for performing various operations on collections.
 Collector   :  it is an interface that is used to collect the elements of a stream into a collection.
+Collectors  :  .collect(Collectors.toList()).
 
 
 
@@ -411,12 +445,12 @@ stream to be concatenated comes first after that the elements of the second stre
 
 how is the parallel streams works?
 instead of calling the .stream() [which is sequenctial streaming] method we call the .parallel() or .parallelStream() method
-and this divides the soruce of data (collection data) into chuncks  and each chunk is processed in a separate thread.
+and this divides the soruce of data (collection data) into chuncks and each chunk is processed in a separate thread.
 
 
-What is the difference between the lists that comes from : 1. Arrays.asList()  2. List.of()   3. Collector.toList() ?
+What is the difference between the lists that comes from : 1. Arrays.asList()  2. List.of()   3. Collectors.toList() ?
 1. Arrays.asList() : it is a method that returns a fixed-size list backed by the specified array. it is (mutable in data but not in size).
-2. List.of() : returns an immutable list (size and data cannot be changed)
+2. List.of()       : returns an immutable list (size and data cannot be changed)
 3. Collector.toList() : returns a mutable list (size and data can be changed) but it is not  an ArrayList. it is a List implementation that is backed by a dynamic array.
 
 
@@ -428,7 +462,7 @@ the information about the error and this object is thrown to the caller of the m
 
 
 What are the types of Exceptions?
-Checked   Exceptions : checked at compiled time and must be handled for the code to be  compiled.
+Checked   Exceptions : checked at compiled time and must be handled for the code to be compiled.
 Unchecked Exceptions : programming errors that  are not checked at compile time and are not required to be handled (need to be fixed) not to fires in runtime (inherits from RuntimeException Class).
 
 /* ======================= Generics =========================== */
@@ -436,9 +470,8 @@ What is Generics Concept?
 Generics allow you to define a class, interface, or method with a placeholder for the type of data it operates on.
 This enables you to create classes and methods that can work with any data type while ensuring type safety at compile time.
 
-
 Can i create a static generic variale?
-No, i can't ==> private T instanceVar;    // Compile time error 
+No, i can't ==> private static T instanceVar;    // Compile time error 
 
 Can i create an array of generic  type?
 No, we can't : T[] arr = {}; // error 
@@ -458,12 +491,13 @@ Process: it is an instance of a program running on a computer system with its ow
 Thread : A unit of execution within a process, capable of executing the code independently and sharing the resources with other threads in the same process.
 
 What are the states of lifecycle of the thread?
-1. New : Thread is created but not started yet. ==> Thread t1 = new Thread(Main::methodName); // a concise way to create the thread by using method ref
+1. New      : Thread is created but not started yet. ==> Thread t1 = new Thread(Main::methodName); // a concise way to create the thread by using method reference
 2. Runnable : Thread is ready to run  and waiting for the CPU to execute it. ==> after calling the t1.start() method
 3. Blocked  : waiting for a resource to be released by another thread
 4. Waiting  : waiting for another thread to perform an action like (join())  
 5. Timed Waiting : waiting of a timed time like (sleep(timed))
 6. Terminated : Thread is finished and no longer running. run() method is complete 
+
 
 What are the thread scheduling mechanisms?
 1. preemptive scheduling : the os can interrupt the current thread to allow another thread to run 
@@ -477,11 +511,13 @@ public ClassName{
 }
 
 Thread  t1 = new Thread(ClassName::MethodThatRunWhenThreadStart);
+t1.start();
 
 what are the challenges that we face when dealing with threads?
 1. race condition : when there is a race between two threads on a shared resource
 2. deadlock       : when two threads waits each other forever to release a shared resource  
 3. starvation     : when the thread takes a shared resource and doesn't let it 
+
 
 what are the mechanisms that we make to face the challenges?
 1. Synchronization: using the synchronized keyword to lock the shared resource (Synchronized)
@@ -489,6 +525,17 @@ what are the mechanisms that we make to face the challenges?
 3. Atomic         : using the Atomic classes to update the shared resource in a thread-safe way
 4. Thread Pools   : using the ExecutorService to manage the threads and avoid the overhead of creating a new thread for each task.
 
+what are the types that swich can switch over it?
+1. String
+2. enum
+3. Integers (byte,short,int,long)
+4. char
+5. var that resoloves to one of the above types
+
+what is acceptable in case of switch case statement?
+1. final
+2. litteral
+3. enum
 
 
 
@@ -503,10 +550,68 @@ what are the mechanisms that we make to face the challenges?
 
 
 
-Refs Links :
+
+
+
+
+
+
+
+
+/* ========================================================= OOP Concepts ========================================================= */
+can we have a priavte class?
+on the class level, no, we can't have a pirvate or protected class.
+
+must the abstract class in java, have an abstract method?
+No, the abstract class in java is declared with abstract keyword in front the class name 
+like : 
+abstract class Shape {
+    abstract void draw(); // Abstract method (optional could be existed or not)
+    void color() {
+        System.out.println("Default color");
+    }
+}
+
+Can a class is not declared with abstract keyword but it has an abstract method?
+No, a class that has an abstract method must be declared as an abstract class.
+abstract class Shape {  // must be declared with abstract method
+    abstract void draw(); // Abstract method
+    void color() {
+        System.out.println("Default color");
+    }
+}
+
+what is the difference between interface and abstract class?
+the main difference lays in the meaning of both:
+- interface      : it is just a contract between the interface and the classes that implements it, this contract says that those are 
+  that we work (methods with empty bodies) and each one implements it with its own way.
+- abstract class : it is a template that contains a shared code where the rest of the hierarchy (childs) extends this code to use it
+and add their own code, abstract class can be declared without any abstract method (and it is perfectly valid).
+
+variables : 
+in interface ==> by default , static, final and public and must be initialized in the interface declaration.
+methods   : in interface ==>  by default , public, abstract (except static and default methods)and must be implemented by the classes that implements it.
+
+constructor :  in interface ==> no, we can't declare a constructor in an interface.
+               in abstract class ==> yes, we can declare a constructor in an abstract class.
+
+Give a defintion for the interface?
+it is a group of related methods with empty bodies, these methods are called abstract methods and must be implemented by the classes that implements the interface.
+
+Can i extend an abstract class without implementing the abstract method?
+yes, but you must declare the child class also as 'abstract' class.
+
+
+
+
+
+
+
+
+/* ======================================================== Refs Links ========================================================= */
 Collections Course
 1. https://www.youtube.com/watch?v=hKhlkx_6HeI&list=PLUDwpEzHYYLu9-xrx5ykNH8wmN1C1qClk&ab_channel=SDET-QA
 Lamda  Expression Course
 2. https://www.youtube.com/watch?v=MMruoVq6160&list=PLUDwpEzHYYLtNoZUJaRJfCktwjVtOwIk3&ab_channel=SDET-QA
 Streams Course
-3. https://www.youtube.com/watch?v=33JrZGtKOEE&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&ab_channel=SDET-QA
+3. https://www.youtube.com/watch?v=33JrZGtKOEE&list=PLUDwpEzHYYLvTPVqVIt7tlBohABLo4gyg&ab_channel=SDET-QAس

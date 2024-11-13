@@ -47,8 +47,6 @@ class  PairImpl<K,V> implements Pair<K,V>{
 
 
 public class GenericsConcurrency {
-
-
     /* ============== Class ============== */
     /* Defining a Generic Method */
     public static <T> void printArray(T[] arr){
@@ -99,7 +97,7 @@ public class GenericsConcurrency {
 
         /* ======== Gneric Method Example ======== */
         Integer[] arr1 = {1,2,3,4,5};
-        String[] arr2 = {"Ahmad","Raafat","Mourad","Farid"};
+        String[]  arr2 = {"Ahmad","Raafat","Mourad","Farid"};
         printArray(arr1);
         printArray(arr2);
 
@@ -124,6 +122,10 @@ public class GenericsConcurrency {
                 Thread.currentThread().interrupt(); // Handle interruption
             }
         }
+        System.out.println("/* ======================= ======================= */");
+        char x = 97;
+        System.out.println(x);
+        
 
 
         // System.out.println("========================================================================");

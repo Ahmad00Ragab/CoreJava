@@ -243,7 +243,7 @@ public class App {
         System.out.println("=========================================================");
         System.out.println("=========================================================");
 
-        /* Anonymous class */
+        /* Anonymous class :  a type of local class and it is without a name, defined and instantiated with a single expression */
         Greeting annonymous = new Greeting() {
             @Override
             public void greeting() {
@@ -264,6 +264,8 @@ public class App {
         people.add(new Person(15, "ali"));
 
         Collections.sort(people);
+
+        people.forEach(System.out::println); // print the list of people using the method reference syntax
 
         for (var p : people) {
             System.out.println(p);
@@ -806,6 +808,10 @@ public class App {
         long endTimeParallel = System.currentTimeMillis();
         System.out.println("Parallel Stream Count: " + countParallel);
         System.out.println("Time taken by Parallel Stream: " + (endTimeParallel - startTimeParallel) + " ms");
+
+
+
+        
 
         
         System.out.println("=========================================================");
